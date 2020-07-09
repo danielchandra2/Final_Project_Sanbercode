@@ -12,7 +12,7 @@ class AdminController extends Controller
     }
 
     public function category(){
-   		 return view('layouts.admin.category');
+   		 return view('layouts.admin.category.index');
     }
 
     public function tag(){

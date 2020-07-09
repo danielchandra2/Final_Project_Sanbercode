@@ -17,22 +17,12 @@ Route::get('/admin', function () {
     return view('layouts.admin.master');
 });
 
-Route::get('/admin/dashboard', function () {
-    return view('layouts.admin.dashboard');
-});
+Route::get('/admin/dashboard', 'AdminController@dashboard');
 
-Route::get('/admin/category', function () {
-    return view('layouts.admin.category');
-});
+Route::get('/admin/category', 'AdminController@category');
 
-Route::get('/admin/tag', function () {
-    return view('layouts.admin.tag');
-});
+Route::get('/admin/tag', 'AdminController@tag');
 
-Route::get('/admin/pertanyaan', function () {
-    return view('layouts.admin.pertanyaan');
-});
+Route::get('/admin/pertanyaan', 'AdminController@pertanyaan');
 
-Route::get('/admin/jawaban', function () {
-    return view('layouts.admin.jawaban');
-});
+Route::get('/admin/jawaban', 'AdminController@jawaban');

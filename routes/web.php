@@ -17,7 +17,18 @@ Route::get('/admin', function () {
     return view('layouts.admin.master');
 });
 
+////////////dibikin pertanyaancontroller
+// pertanyaan masih belom bikin pagenya
+Route::get("/pertanyaan", "PertanyaanController@index");
+Route::get("/pertanyaan/create", "PertanyaanController@create");
+Route::post("/pertanyaan", "PertanyaanController@store");
+Route::get("/pertanyaan/{id}", "PertanyaanController@show");
+Route::get("/pertanyaan/{id}/edit", "PertanyaanController@edit");
+Route::put("/pertanyaan/{id}", "PertanyaanController@update");
+Route::delete("/pertanyaan/{id}", "PertanyaanController@destroy");
 
+
+////////////////////////////////////////////////////////
 Route::get('/admin/dashboard', 'AdminController@dashboard');
 
 //Route::get('/admin/category', 'AdminController@category');

@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     //
+    // buat autentikasi dulu
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function dashboard(){
    		 return view('layouts.admin.dashboard');
     }

@@ -31,3 +31,6 @@ Route::get('/admin/jawaban', 'AdminController@jawaban');
 Route::resource('/admin/category','CategoryController');
 
 Route::resource('/admin/tag','TagController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

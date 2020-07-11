@@ -13,10 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/admin', function () {
+/*Route::get('/admin', function () {
     return view('layouts.admin.master');
 });
+*/
 
+Route::get('/', function () {
+    return view('welcome');
+});
 ////////////dibikin pertanyaancontroller
 // pertanyaan masih belom bikin pagenya
 Route::get("/pertanyaan", "PertanyaanController@index");
@@ -29,19 +33,18 @@ Route::delete("/pertanyaan/{id}", "PertanyaanController@destroy");
 
 
 ////////////////////////////////////////////////////////
-Route::get('/admin/dashboard', 'AdminController@dashboard');
+
+Auth::routes();
+Route::group(['middleware' => 'auth' ,'users' => 'danielchandra1.dc@gmail.com'], function(){
+	Route::get('/home', 'HomeController@index')->name('home');
+	Route::get('/admin/dashboard', 'AdminController@dashboard');
+	Route::get('/admin/pertanyaan', 'AdminController@pertanyaan');
+	Route::get('/admin/jawaban', 'AdminController@jawaban');
+	Route::resource('/admin/category','CategoryController');
+	Route::resource('/admin/tag','TagController');
+});
 
 //Route::get('/admin/category', 'AdminController@category');
 
 //Route::get('/admin/tag', 'AdminController@tag');
 
-Route::get('/admin/pertanyaan', 'AdminController@pertanyaan');
-
-Route::get('/admin/jawaban', 'AdminController@jawaban');
-
-Route::resource('/admin/category','CategoryController');
-
-Route::resource('/admin/tag','TagController');
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

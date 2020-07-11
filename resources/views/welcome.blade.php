@@ -81,18 +81,16 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    StackOverFlow-Sanbercode
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="/home">Home</a>
+                    <a href="/admin/profile">Profile</a>
+                    <a href="/admin/pertanyaan">Post Pertanyaan</a>
+                    <a href="/admin/category">Category</a>
+                    <a href="/admin/tag">Tag</a>
+                    <a href="/admin/dashboard">Dashboard</a>
                 </div>
             </div>
         </div>

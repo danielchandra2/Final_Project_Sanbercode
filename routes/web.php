@@ -37,19 +37,38 @@ Route::post("/jawaban/{pertanyaan_id}", "JawabanController@store");
 ////////////////////////////////////////////////////////
 
 Auth::routes();
-Route::group(['middleware' => 'auth' ,'users' => 'danielchandra1.dc@gmail.com'], function(){
-	Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'is_admin' ], function(){
+	Route::get('admin/home', 'HomeController@adminHome')->name('admin.home');
 	Route::get('/admin/dashboard', 'AdminController@dashboard');
-	Route::get('/admin/pertanyaan', 'AdminController@pertanyaan');
-	Route::get('/admin/jawaban', 'AdminController@jawaban');
+	//Route::get('/admin/pertanyaan', 'AdminController@pertanyaan');
+	//Route::get('/admin/jawaban', 'AdminController@jawaban');
 	Route::resource('/admin/category','CategoryController');
-	Route::resource('/admin/tag','TagController');
+	Route::resource('/admin/tag','TagController');	
 });
+
+Route::group(['middleware' => 'auth' ], function(){
+	Route::get('/home', 'HomeController@index')->name('home');
+	Route::get("/pertanyaan", "PertanyaanController@index");
+	Route::get("/pertanyaan/create", "PertanyaanController@create");
+	Route::post("/pertanyaan", "PertanyaanController@store");
+	Route::get("/pertanyaan/{id}", "PertanyaanController@show");
+	Route::get("/pertanyaan/{id}/edit", "PertanyaanController@edit");
+	Route::put("/pertanyaan/{id}", "PertanyaanController@update");
+	Route::delete("/pertanyaan/{id}", "PertanyaanController@destroy");
+
+	Route::post("/jawaban/{pertanyaan_id}", "JawabanController@store");
+});
+
 
 //Route::get('/admin/category', 'AdminController@category');
 
 //Route::get('/admin/tag', 'AdminController@tag');
 
+//auth admin
+
+Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
+//
 
 //////wsyiwyg
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {

@@ -86,10 +86,9 @@
 
                 <div class="links">
                     <a href="/home">Home</a>
-                    <a href="/admin/profile">Profile</a>
-                    <a href="/admin/pertanyaan">Post Pertanyaan</a>
-                    <a href="/admin/category">Category</a>
-                    <a href="/admin/tag">Tag</a>
+                    <a href="/pertanyaan">Post Pertanyaan</a>
+                    <a href="/category">Category</a>
+                    <a href="/tag">Tag</a>
                     <a href="/admin/dashboard">Dashboard</a>
                 </div>
             </div>

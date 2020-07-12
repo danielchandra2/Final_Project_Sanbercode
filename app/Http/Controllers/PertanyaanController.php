@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PertanyaanModel;
+use App\Models\JawabanModel;
 use App\Pertanyaan;
+use App\Jawaban;
 use Illuminate\Support\Str;
 
 class PertanyaanController extends Controller
@@ -42,7 +44,8 @@ class PertanyaanController extends Controller
 
     public function show($id){
         $pertanyaan = PertanyaanModel::find_by_id($id);
-        $compact = compact("pertanyaan");
+        $jawaban = JawabanModel::get_all();
+        $compact = compact("pertanyaan", "jawaban");
         return view("pertanyaan.show", $compact);
     }
 

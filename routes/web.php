@@ -31,6 +31,8 @@ Route::get("/pertanyaan/{id}/edit", "PertanyaanController@edit");
 Route::put("/pertanyaan/{id}", "PertanyaanController@update");
 Route::delete("/pertanyaan/{id}", "PertanyaanController@destroy");
 
+//jawaban
+Route::post("/jawaban/{pertanyaan_id}", "JawabanController@store");
 
 ////////////////////////////////////////////////////////
 
@@ -48,3 +50,9 @@ Route::group(['middleware' => 'auth' ,'users' => 'danielchandra1.dc@gmail.com'],
 
 //Route::get('/admin/tag', 'AdminController@tag');
 
+
+//////wsyiwyg
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+	\UniSharp\LaravelFilemanager\Lfm::routes();
+});
+/////

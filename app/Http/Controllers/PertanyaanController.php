@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PertanyaanModel;
+use App\Pertanyaan;
+use Illuminate\Support\Str;
 
 class PertanyaanController extends Controller
 {
@@ -25,12 +27,17 @@ class PertanyaanController extends Controller
     }
 
     public function store(Request $request){
-        $data = $request->all();
-        unset($data["_token"]); //array asosiatif key _token biar ga ikut
-        $pertanyaansave = PertanyaanModel::save($data);
-        if($pertanyaansave){
-            return redirect("/pertanyaan");
-        }
+        $new_pertanyaan = new Pertanyaan;
+
+        $new_pertanyaan->judul = $request["judul"];
+        $new_pertanyaan->isi = $request["isi"];
+        $new_pertanyaan->user_id = $request["user_id"];
+        $new_pertanyaan->tag_id = $request["tag_id"];
+        $new_pertanyaan->category_id = $request["category_id"];
+
+        $new_pertanyaan->save();
+
+        return redirect("/pertanyaan");
     }
 
     public function show($id){
@@ -46,9 +53,16 @@ class PertanyaanController extends Controller
     }
 
     public function update($id, Request $request){
-        $data = $request->all();
-        unset($data["_token"]);
-        $pertanyaan = PertanyaanModel::update($id, $data);
+        $pertanyaan = Pertanyaan::find($id);
+
+        $pertanyaan->judul = $request["judul"];
+        $pertanyaan->isi = $request["isi"];
+        $pertanyaan->user_id = $request["user_id"];
+        $pertanyaan->tag_id = $request["tag_id"];
+        $pertanyaan->category_id = $request["category_id"];
+
+        $pertanyaan->save();
+
         return redirect("/pertanyaan");
     }
 
